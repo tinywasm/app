@@ -81,7 +81,7 @@ require (
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
 	github.com/tdewolff/minify/v2 v2.24.8 // indirect
 	github.com/tinywasm/assetmin v0.2.0
-	github.com/tinywasm/devbrowser v0.2.40
+	github.com/tinywasm/devbrowser v0.2.41
 	github.com/tinywasm/devwatch v0.0.57
 	github.com/tinywasm/mcpserve v0.0.19
 	github.com/tinywasm/server v0.1.56
