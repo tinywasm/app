@@ -29,7 +29,7 @@ func runDaemon(cfg BootstrapConfig) {
 		Port:          mcpPort,
 		ServerName:    "TinyWasm - Global MCP Server",
 		ServerVersion: "1.0.0",
-		AppName:       "tinywasm",
+		AppName:       cfg.AppName,
 		AppVersion:    cfg.Version,
 	}
 

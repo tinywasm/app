@@ -65,6 +65,7 @@ func main() {
         McpMode: *mcpFlag,
         Debug: *debugFlag,
         Version: Version,
+        AppName: "tinywasm",
         Logger: logger.Logger,
         DB: db,
         GitHandler: gitHandler,
