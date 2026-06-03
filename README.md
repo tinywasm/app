@@ -16,15 +16,20 @@
 - **TinyGo** (for M/S WASM modes) — [tinygo.org/getting-started/install](https://tinygo.org/getting-started/install/)
 - **Chrome/Chromium** — for browser automation
 
-### Install via Go
-
-```bash
-go install github.com/tinywasm/app/cmd/tinywasm@latest
-```
-
 ### Download binary
 
-Pre-compiled binaries for Linux, macOS, and Windows are available on the [Releases](https://github.com/tinywasm/app/releases) page.
+The source code is private, so `go install` is not available. Download the pre-compiled
+binary for your platform from the [Releases](https://github.com/tinywasm/app/releases) page,
+make it executable, and place it on your `PATH`:
+
+```bash
+# Linux amd64 example — adjust for your platform/tag
+curl -L -o tinywasm https://github.com/tinywasm/app/releases/latest/download/tinywasm-linux-amd64
+chmod +x tinywasm
+sudo mv tinywasm /usr/local/bin/
+```
+
+Binaries are published for Linux (amd64/arm64), macOS (arm64), and Windows (amd64).
 
 ---
 
