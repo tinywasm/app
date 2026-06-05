@@ -10,26 +10,31 @@
 
 ## Installation
 
-### Prerequisites
-
-- **Go 1.25.2+** — [go.dev/dl](https://go.dev/dl/)
-- **TinyGo** (for M/S WASM modes) — [tinygo.org/getting-started/install](https://tinygo.org/getting-started/install/)
-- **Chrome/Chromium** — for browser automation
-
-### Download binary
-
-The source code is private, so `go install` is not available. Download the pre-compiled
-binary for your platform from the [Releases](https://github.com/tinywasm/app/releases) page,
-make it executable, and place it on your `PATH`:
+### Linux / macOS
 
 ```bash
-# Linux amd64 example — adjust for your platform/tag
-curl -L -o tinywasm https://github.com/tinywasm/app/releases/latest/download/tinywasm-linux-amd64
-chmod +x tinywasm
-sudo mv tinywasm /usr/local/bin/
+curl -fsSL https://raw.githubusercontent.com/tinywasm/installer/main/scripts/install.sh | bash
 ```
 
-Binaries are published for Linux (amd64/arm64), macOS (arm64), and Windows (amd64).
+### Windows (PowerShell as Admin)
+
+```powershell
+irm https://raw.githubusercontent.com/tinywasm/installer/main/scripts/install.ps1 | iex
+```
+
+The installer downloads the latest binary for your platform, verifies its SHA256 checksum,
+and places it on your `PATH`. Go and TinyGo are installed automatically — no prerequisites needed.
+
+### Update
+
+```bash
+tinywasm --update
+```
+
+### Manual download (fallback)
+
+Pre-compiled binaries for Linux (amd64/arm64), macOS (arm64/amd64) and Windows (amd64)
+are available on the [Releases](https://github.com/tinywasm/app/releases) page.
 
 ---
 
