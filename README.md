@@ -1,6 +1,6 @@
 # TinyWasm
 
-<img src="https://raw.githubusercontent.com/tinywasm/app/main/docs/img/badges.svg">
+<img src="docs/tui.png">
 
 **LLM-Friendly Full-Stack Go Framework** — build complete web applications using only **Go + WebAssembly**, with minimal JavaScript. TinyWasm is a TUI-based development environment that acts as an intelligent intermediary between you, your LLM assistant, and your application.
 
