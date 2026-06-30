@@ -7,8 +7,9 @@ compiler rejects what's wrong.
 
 ## What this means for you
 
-- **Typed over `any`.** No generic slots where the wrong value slips in unnoticed; each method takes
-  the type that makes sense.
+- **Typed over `any`.** No generic slots; typed methods state what they accept, so the wrong value
+  doesn't compile. Anything that changes goes through a binding that requires a typed reactive value —
+  a plain value can't be made reactive by accident.
 - **Explicit over implicit.** The method name states intent, so reading a call tells you what it does
   without opening the implementation.
 - **Illegal states unrepresentable.** "I want this to change" has exactly one path, typed to require
