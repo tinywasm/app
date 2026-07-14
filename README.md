@@ -46,7 +46,7 @@ mkdir myapp && cd myapp
 tinywasm
 ```
 
-TinyWasm will scaffold a new project, start the dev server on `https://localhost:6060`, launch the TUI with live logs, open Chrome with auto-reload, and start the MCP server on `http://localhost:3030/mcp`.
+TinyWasm will scaffold a new project, start the dev server on `https://localhost:8080`, launch the TUI with live logs, open Chrome with auto-reload, and start the MCP server on `http://localhost:8080/mcp`.
 
 ---
 

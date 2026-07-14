@@ -10,7 +10,7 @@ A fully functional MCP server lets AI assistants (Claude, GitHub Copilot, etc.):
 - **Manage the environment** — start/stop servers, reload the browser, check status.
 
 Your LLM can debug visual issues and understand runtime behavior without you copy-pasting logs or
-screenshots — saving tokens and time. Starts automatically at `http://localhost:3030/mcp`. Full
+screenshots — saving tokens and time. Starts automatically at `http://localhost:8080/mcp`. Full
 reference: [MCP.md](./MCP.md).
 
 ## 📦 Three WebAssembly compilation modes
@@ -40,7 +40,7 @@ Your development control center:
 - Color-coded logs from all components.
 - One command: run `tinywasm` in your project directory.
 - Chrome automation with live-reload injection.
-- HTTPS on port 6060 with dev certificates.
+- HTTPS on port 8080 with dev certificates.
 
 The TUI manages infrastructure complexity so you (and your LLM) focus on application logic.
 
