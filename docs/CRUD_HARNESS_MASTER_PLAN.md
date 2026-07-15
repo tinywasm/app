@@ -80,14 +80,14 @@ flowchart LR
     E --> F
 ```
 
-| Fase | Repo | Plan | Tipo | Gate |
-|---|---|---|---|---|
-| A | `tinywasm/model` | `docs/PLAN.md` | **gate** — bloquea todo | — |
-| B | `tinywasm/form` | `docs/PLAN.md` | paralelo con D | A publicada |
-| C | `tinywasm/layout` | `docs/PLAN.md` | **gate** de la app | A + B publicadas |
-| D | `orm`, `ormc`, `user`, `sqlite` | sin plan (recompilado) | paralelo con B | A publicada |
-| E | `veltylabs/modules/service_catalog` | `docs/PLAN.md` | paralelo con C | A + B publicadas |
-| F | `veltylabs/mjosefa-cms` | `docs/PLAN.md` | **último, siempre** | C + D + E publicadas |
+| Fase | Repo | Plan | Tipo | Gate | Estado |
+|---|---|---|---|---|---|
+| A | `tinywasm/model` | `docs/LAST_PLAN_EXECUTED.md` | **gate** — bloquea todo | — | ✅ **publicado v0.0.14** 2026-07-14, LOCAL. Cascade de `gopush` NO propagó a `sqlite`/`orm`/`app`/`postgres`/`sqlt`/`sqlmcp`/`user`/`indexdb` (vet preexistente, no causado por este cambio; repos intactos en v0.0.12) — fase D los toma deliberadamente |
+| B | `tinywasm/form` | `docs/PLAN_EXECUTED.md` | paralelo con D | A publicada | ✅ **publicado v0.2.14** 2026-07-14 vía codejob (Jules, PR #16). `user` reportó `tests ❌` transitorio al bumpear — reproducido a mano, verde; republicado como `user` v0.0.36 |
+| C | `tinywasm/layout` | `docs/PLAN.md` | **gate** de la app | A + B publicadas | ☐ |
+| D | `orm`, `ormc`, `user`, `sqlite` | sin plan (recompilado) | paralelo con B | A publicada | ✅ **cerrada** 2026-07-14, LOCAL — `ormc` v0.0.14 (auto, cascade), `orm` v0.9.28 (fix: `emptyModel`/`MockModel` sin `Encodable`/`Decodable`), `sqlite` v0.2.6 (fix: 7 fixtures de test a mano sin `Encodable`/`Decodable`), `user` v0.0.35 (sin defecto propio, solo esperaba a `sqlite`) |
+| E | `veltylabs/modules/service_catalog` | `docs/PLAN.md` | paralelo con C | A + B publicadas | ☐ |
+| F | `veltylabs/mjosefa-cms` | `docs/PLAN.md` | **último, siempre** | C + D + E publicadas | ☐ |
 
 ## Fase D — por qué es un recompilado y no una reescritura
 
