@@ -34,11 +34,11 @@ authority/rbac.go:193:   undefined: orm.ErrNoRows
 authority/rbac.go:237:   undefined: orm.ErrNoRows
 ```
 
-Es exactamente el mismo drift que el master plan ya registró para `item_catalog` (fila C, §2b:
-`orm.DB.CreateTable` se movió a `tinywasm/ddl`) — pero **la fila de `tinywasm/user` no existe en el
-master plan**. El agente del PR, sin poder tocar repos aguas arriba, hizo lo que el propio master
-plan prohíbe (§3: "un wrapper que parcha es un fork con nombre amable"; §6: "no hay `replace` hacia
-carpetas locales"):
+Es exactamente el mismo drift que el master plan ya registró para `item_catalog` (fila C, hoy §2
+del master consolidado: `orm.DB.CreateTable` se movió a `tinywasm/ddl`) — pero al momento de esta
+auditoría **la fila de `tinywasm/user` no existía en el master plan** (rectificado: filas B6a/B6b).
+El agente del PR, sin poder tocar repos aguas arriba, hizo lo que el master plan prohíbe (§3
+"Decisiones cerradas": aguas arriba, nunca fork local — ni wrapper, ni `replace` a carpeta local):
 
 - `local_orm/`: copia del orm que añade `func (d *DB) CreateTable(schema any) error { return nil }`.
   **Ese no-op desactiva en silencio la creación del esquema completo de autenticación**
@@ -136,8 +136,8 @@ que hoy son triviales se multiplican por N:
   capacidad más del bag y `ProductionDeps` la registre — mismo patrón dispatch-por-capacidad, sin
   contrato nuevo aguas arriba (basta implementar `RBACObject` de `user`).
 - **`work_schedule` viola la regla anti-fork** (`replace … => ../../../tinywasm/mcp`, ya anotado en
-  master plan §6). Con el precedente de §2, cerrar eso en su rectificación de Fase E no es opcional:
-  es el mismo patrón que acaba de morder en producción.
+  master plan §3 "Decisiones cerradas"). Con el precedente de §2, cerrar eso en su rectificación de
+  Fase E no es opcional: es el mismo patrón que acaba de morder en producción.
 
 Nada de esto requiere rediseñar el harness: son verificaciones y cableado sobre el patrón existente.
 
