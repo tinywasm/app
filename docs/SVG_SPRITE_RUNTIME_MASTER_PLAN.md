@@ -98,7 +98,7 @@ once the first full scan lands.
 
 | Phase | Repo / plan | Scope | Execution | Status |
 |---|---|---|---|---|
-| **A (primary)** | `assetmin/docs/PLAN.md` | (1) module-keyed sprite storage so re-extraction replaces, not appends — dedup by id; (2) `ScheduleSSRLoad` retries with bounded backoff until one success, error surfaced via `Logger` not swallowed; (3) refresh `.svg` after the background scan merges. + regression tests. | codejob | ☐ |
+| **A (primary)** | `assetmin/docs/PLAN.md` | (1) module-keyed sprite storage so re-extraction replaces, not appends — dedup by id; (2) `ScheduleSSRLoad` retries with bounded backoff until one success, error surfaced via `Logger` not swallowed; (3) refresh `.svg` after the background scan merges. + regression tests. | codejob | ☑ PR [#35](https://github.com/tinywasm/assetmin/pull/35). `moduleSprites map[string]*sprite.Sprite` (replaces `masterSprite`), sorted+deduped `renderSprite()`, 5-attempt exponential-backoff retry in `ScheduleSSRLoad`, background refresh of `.svg/.css/.js/.html` on success. Verified: `go test ./...` green; independently re-verified end-to-end against the real `layout`+`components` tree (all 8 real icons, exactly once, stable across 3 repeated scans) — not just assetmin's own unit tests. |
 | **B (wiring)** | `app/docs/PLAN_SPRITE_RUNTIME.md` | (1) `AssetsHandler.SetLog(h.Watcher.Logger)` so assetmin diagnostics are visible; (2) after the first successful `LoadSSRModules` scan, call `h.Watcher.RequestReload()` so the browser re-fetches the now-complete sprite. | codejob | ☐ |
 
 Phase A is self-sufficient for correctness (the dynamic sprite handler + retry
