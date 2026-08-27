@@ -32,8 +32,8 @@ Hub multi-repo. Cierra el acoplamiento que impedía reutilizar y testear un mód
 |---|---|---|
 | F1 | `tinywasm/model` | ✅ `v0.1.7` `PolicyDescriber`/`RolesFor` (2026-08-26) |
 | F2 | `tinywasm/router` | ✅ `v0.1.29` `{id}` + `MountIntrospection` (2026-08-27) |
-| F3 | `tinywasm/cloudflare` | ☐ pendiente — puerta F2 ya abierta |
-| F4 | `tinywasm/server` | ☐ pendiente — puerta F2 ya abierta |
+| F3 | `tinywasm/cloudflare` | ✅ `v0.0.12` `Param` edge (2026-08-27) — corrección `conformanceCtx.SetParams` |
+| F4 | `tinywasm/server` | ✅ `v0.2.43` `Param` httpd + `MountIntrospection` (2026-08-27) |
 | G1 | `veltylabs/site_manager` | ✅ `v0.4.1` scoping + `Accepts` (2026-08-27) |
 | G2 | `veltylabs/site_content` | ✅ `v0.2.3` scoping + `MemberChecker` (2026-08-27) |
 | H1 | `veltylabs/iam` | ✅ `v0.0.21` `Consumer`/`AssignRole` (2026-08-27) |
@@ -90,8 +90,8 @@ Criterio verde C: blacklist vacía (`tinywasm/mcp|json|unixid|sqlite|sqlt|postgr
 | F0 | `veltylabs/misitio` | [`PLAN_ACCESO_403.md`](https://github.com/veltylabs/misitio/blob/main/docs/PLAN_ACCESO_403.md) | 6×403 `PolicyDescriber`+`ResourceOf` | — | ☐ **despachable** |
 | F1 | `tinywasm/model` | `docs/PLAN.md` | `RoleGrant`/`PolicyDescriber`/`RolesFor` | — | ✅ `v0.1.7` |
 | F2 | `tinywasm/router` | `docs/PLAN.md` | `{id}`+`Param`+`MountIntrospection`+`Args` | F1 | ✅ `v0.1.29` |
-| F3 | `tinywasm/cloudflare` | `docs/PLAN.md` | `Param` edge; borra `pathMatches` | F2 | ☐ **despachable** |
-| F4 | `tinywasm/server` | `docs/PLAN.md` | `Param` httpd + `MountIntrospection` + `Config.Policy` | F2 | ☐ **despachable** |
+| F3 | `tinywasm/cloudflare` | `docs/PLAN.md` | `Param` edge; borra `pathMatches` | F2 | ✅ `v0.0.12` |
+| F4 | `tinywasm/server` | `docs/PLAN.md` | `Param` httpd + `MountIntrospection` + `Config.Policy` | F2 | ✅ `v0.2.43` |
 | G1 | `veltylabs/site_manager` | `docs/PLAN.md` | scoping `MemberOf` + `Accepts` | — | ✅ `v0.4.1` |
 | G2 | `veltylabs/site_content` | `docs/PLAN.md` | scoping `site_id` + `MemberChecker` | — | ✅ `v0.2.3` |
 | H1 | `veltylabs/iam` | `docs/PLAN.md` | `Consumer`+`AssignRole` | — | ✅ `v0.0.21` |
