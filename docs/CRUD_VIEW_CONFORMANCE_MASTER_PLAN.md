@@ -60,7 +60,7 @@ wire and form. The two vocabularies encode two intents:
   (`user`, `goflare-demo/contact`, veltylabs modules).
 
 They live in separate packages because of dependency direction: `model` is the
-base lego for the whole backend and must not carry UI metadata; `form/input`
+base lego for the whole backend and must not carry UI metadata; `tinywasm/input`
 depends on `model`, never the reverse.
 
 The REAL hole is that for scalar kinds the vocabularies overlap and the
@@ -126,7 +126,7 @@ Nothing runs in parallel: B consumes A's tag; C observes B's build.
 ## 5. Decisions requiring your review before dispatch
 
 1. **`view/conformance` gains a dependency on `github.com/tinywasm/form`**
-   (only the `form/input` sub-package, which itself links only `model` + `fmt`
+   (only the `tinywasm/input` sub-package, which itself links only `model` + `fmt`
    — no `dom` reaches test binaries). This is the price of finding #4's fix:
    mocks must carry real widgets to be constructible by `form.New`. The
    alternative (a widget stub inside `conformance`) would be a local fork of

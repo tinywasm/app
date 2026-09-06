@@ -57,7 +57,7 @@ GOOS=js GOARCH=wasm go list -deps ./edge | grep -E 'tinywasm/(html|dom)|^regexp$
 ## 3. Causa raíz (cadena de fuga del edge)
 
 ```
-edge → modules/contact → form/input → tinywasm/html (→ regexp ~35KB) + tinywasm/dom
+edge → modules/contact → tinywasm/input → tinywasm/html (→ regexp ~35KB) + tinywasm/dom
 ```
 
 `input.Input` embebe `dom.Component` (rendering) junto a `fmt.Widget` (metadata). El
@@ -72,7 +72,7 @@ Desglose `edge.wasm` (code, con debug):
 | `regexp`+`regexp/syntax` | **~35 KB** | ❌ fuga (vía `html`) |
 | `tinywasm/json` | ~13 KB | legítimo |
 | `tinywasm/sqlt` | ~9 KB | legítimo |
-| `tinywasm/form/input` | ~6 KB | ❌ fuga (widgets, no se renderiza) |
+| `tinywasm/tinywasm/input` | ~6 KB | ❌ fuga (widgets, no se renderiza) |
 | `tinywasm/dom` | ~3 KB | ❌ fuga (rendering) |
 
 ---
@@ -148,7 +148,7 @@ flowchart TD
 > espíritu que `fmt/benchmark` (standard-lib vs tinystring).
 
 > **Medición gate F (2026-06-17):** `edge.wasm` **342 KB → 234 KB** (−108 KB). Fugas cerradas:
-> `regexp`/`html`/`dom` fuera; `form/input` 6 KB → 0.3 KB. **Hallazgos nuevos:** (1) `fetch` NO
+> `regexp`/`html`/`dom` fuera; `tinywasm/input` 6 KB → 0.3 KB. **Hallazgos nuevos:** (1) `fetch` NO
 > aporta tamaño → Fase D despriorizada; (2) 🔴 `reflect` (~72 KB de tablas de tipos) entra vía
 > `tinywasm/jsvalue` (`ToJS`/`ToGo`, sin consumidores en el ecosistema) → **Fase G**, la palanca
 > grande que queda. **Objetivo <50 KB recalibrado:** irreal para este workload (fmt 30 + json 13
